@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .footnote { font-size: small ; position: fixed; bottom: 1% ;}
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+class:center 
+
+#  'complete.html'
+
+Instructions by dbj.systems
+
+.footnote[.red.bold[1] Important footnote]
+
+???
+
+Press "P" fro presenter mode
+"C" (while in the "P" mode) will show in a browser the cloned presentation. Suitable for another monitor.
+Have to find css .footnote class somewhere
+---
+
+# How to use
+
+Open this file  and change `sourceUrl` to the required md file. Line to edit is easy to find. 
+
+```html
+<body onload="var slideshow = remark.create( /*{sourceUrl: 'my_slideset.md'}*/ );">
+```
+If your presentation is called 'slideset_one.md', and is in the same folder as this file is, your change will look like this:
+```html
+<body onload="var slideshow = remark.create({sourceUrl: 'slideset_one.md'} );">
+```
+Comments are removed and your file name is in. For best results place your presentations in the same folder as this file.
+
+In that md you need to follow [REMARK md rules](https://github.com/gnab/remark/wiki) to turn it into slide show.
+
+This file (`complete.html`) is portable; you don't need any other file, or an internet connection for your presentations.
+
+???
+
+Should we add instructions on using md files form different folders?
+
+---
+
+# Thank you
+
+<img src="https://dbj.org/wp-content/uploads/2015/12/dbj-system-icon-graphite-.jpg" width="128" />
+
+
+This slideset &copy; 2020 by [dbj.systems](https://dbj.systems) , Licence: CC BY SA 4.0
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create(
+        /*{sourceUrl: 'slideset_one.md'}*/
+        );
+    </script>
+  </body>
+</html>

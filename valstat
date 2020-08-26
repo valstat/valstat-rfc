@@ -1,0 +1,37 @@
+#ifndef _DBJ_VALSTAT_INC_
+#define _DBJ_VALSTAT_INC_
+
+/**
+ (c) by  Dusan B. Jovanovic, https://dusanjovanovic.org
+
+ Licence: CC BY SA 4.0
+
+valstat is behavior pattern and proposed ISO C++ returns handling 
+
+"... In software engineering, behavioral design patterns are 
+design patterns that identify common communication patterns 
+among objects and realize these patterns. By doing so, 
+these patterns increase flexibility 
+in carrying out this communication ..."
+
+ */
+
+#include <optional>
+
+namespace std
+{
+using ::std::optional;
+
+template <typename T, typename S>
+struct [[nodiscard]] valstat {
+	using type = valstat;
+	using value_type = T;
+	using status_type = S;
+	optional<T> value;
+	optional<S> status;
+
+}; // valstat
+
+}; // namespace std
+
+#endif // !_DBJ_VALSTAT_INC_

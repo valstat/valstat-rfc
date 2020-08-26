@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="lib">
+      <UniqueIdentifier>{dffc3ba7-4d32-4015-a775-b23719aa4d1a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="applicability.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\common.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\experimental.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\local_type_traits.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="modern_fopen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="std_valstat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dbj_valstat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\posix.h">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\http_status_codes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="http_client.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\dbj_dbg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="oo+valstat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="experimental.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="P2192.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="win32_metastate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
