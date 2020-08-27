@@ -3,7 +3,10 @@
 #define HTTP_STATUS_CODES_INC_
 
 /// dbj.org CC BY SA 4.0
-/// dbj.org changed the case to all small, introducee stdbool etc
+/// dbj.org changed the case to all small, introduced stdbool etc
+
+#include "config.h"
+
 #include <assert.h>
 #include <stdbool.h>
 /*
@@ -125,7 +128,7 @@ extern "C" {
 	static inline bool http_status_is_error(http_status_code code) { return (code >= 400); }
 
 	/*
-	adhoc valstat is fine. it carries the metastate to the C and C++ callers
+	valstat carries the metastate to the C and C++ callers
 
 	NOTE: using errno makes function not pure ...
 	*/
@@ -134,11 +137,9 @@ extern "C" {
 		const  errno_t * status;
 	} http_status_string_valstat;
 
-	/*! Returns the standard HTTP reason phrase for a HTTP status code.
-	 * \param code An HTTP status code.
-	 * \return The standard HTTP reason phrase for the given \p code or \c NULL if no standard
-	 * phrase for the given \p code is known.
-	 */
+	// Returns the standard HTTP reason phrase for a HTTP status code.
+	// NOTE: thanks to metastate/valstat this is indeed a pure function
+	DBJ_PURE_FUN
 	static inline http_status_string_valstat 
 		http_status_string (http_status_code code)
 	{
@@ -220,7 +221,7 @@ extern "C" {
 		case 511: return (http_status_string_valstat) { "Network Authentication Required", 0 } ;
 
 		default: {
-			static int einval_ = EINVAL;
+			static const int einval_ = 22; // invalid_argument = 22, // EINVAL
 			// EINVAL is POSIX invalid_argument
 			// no globals touched
 			// this is a pure function

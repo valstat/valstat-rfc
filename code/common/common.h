@@ -33,6 +33,19 @@ namespace {
 #undef  SX
 #define SX(x_) do { std::cout << "\n" #x_ " : " << (x_); } while(0)
 
+#ifdef DBJ_USING_IOSTREAM
+
+#include <iostream>
+
+namespace dbj
+{
+    inline ::std::ostream& operator << (::std::ostream& os, dbj_errc ec_)
+    {
+        return os << dbj_errc_message(ec_);
+    }
+}
+
+#endif // DBJ_USING_IOSTREAM
 
 namespace dbj {
 

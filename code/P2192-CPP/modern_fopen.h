@@ -20,7 +20,7 @@ noexcept
     if (NULL == fp_)
         // returning the ERROR metastate
         // dbj::errc is internal enum with POSIX error codes
-        return { {} ,  dbj::errc(ec_) }; 
+        return { {} ,  dbj::dbj_errc(ec_) }; 
 
     // returning the OK metastate
     return { fp_, {} }; // OK metastate

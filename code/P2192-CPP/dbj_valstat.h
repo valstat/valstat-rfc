@@ -1,9 +1,15 @@
 #pragma once
 
 #include "std_valstat.h"
-#include <optional>
-#include "../common/posix.h"
+
 #include "../common/http_status_codes.h"
+
+#define DBJ_USING_IOSTREAM
+#include "../common/posix_codes_messages.h"
+
+#include <optional>
+
+
 
 // dbj imaginary company have adopted the metastate idea
 namespace dbj {
@@ -21,7 +27,7 @@ namespace dbj {
 	// declaring metastate carrier 
 	// using posix error codes for status types
 	template <typename T >
-	using posix_valstat = dbj::valstat< T, dbj::errc >;
+	using posix_valstat = dbj::valstat< T, dbj_errc >;
 
 	// reality check tels us there are oceans of code
 	// where http_status_code is predefined to exist as C code

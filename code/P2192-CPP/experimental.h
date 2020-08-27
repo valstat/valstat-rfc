@@ -142,7 +142,7 @@ namespace dbj::experimental {
 		}
 
 	private:
-		// BIG warrning:
+		// BIG warning:
 		// there is no way of knowing if this is a dangling pointer
 		T* ptr_{};
 	};

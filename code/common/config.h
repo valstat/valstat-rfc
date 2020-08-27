@@ -6,10 +6,10 @@
 #pragma clang system_header
 #endif
 
-#ifdef __clang__
-#define PURE_FUN   __attribute__((const))
+#if __GNUC__
+#define DBJ_PURE_FUN   __attribute__((const))
 #else
-#define PURE_FUN   
+#define DBJ_PURE_FUN   
 #endif
 /*
 

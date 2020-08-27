@@ -9,9 +9,8 @@
 #include <string.h>
 
 /// ------------------------------------------------------------
-class person final
+struct person final
 {
-public:
     using string = const char*;
 
     // by value
@@ -106,12 +105,9 @@ void oo_valstat_test ()
 #include <optional>
 // we do not use std::errc
 // so we do not include system_error machinery
-#include <errno.h>
+// #include <errno.h>
 
 namespace dbj {
-
-    template<typename T, size_t N>
-    struct sequence;
 
     /*
     metastate emiting sequence type
@@ -119,10 +115,14 @@ namespace dbj {
     template<typename T, size_t N>
     struct sequence {
 
-    // emebeded valstat alias
-    using valstat = std::valstat< std::optional<T>, std::optional<dbj::errc> >;
+        using type = sequence;
+        using value_type = T;
 
-    // does not reqire deduction guide
+
+    // emebeded valstat alias
+    using valstat = std::valstat< std::optional<T>, std::optional<dbj_errc> >;
+
+    // does not require deduction guide
     explicit sequence(const T(&arr_)[N]) noexcept
     {
         for (size_t k = 0; k < N; ++k)
@@ -137,7 +137,7 @@ namespace dbj {
     {
         if ((size_ - 1) < idx_ )
             /* ERROR metastate */
-            return { {}, dbj::errc::invalid_argument };
+            return { {}, dbj::dbj_errc(invalid_argument) };
         /* OK metastate */
         return { data_[idx_] , {} };
     }
@@ -152,8 +152,6 @@ namespace dbj {
 #include <iostream>
 
 inline void stl_valstat_test() {
-
-
 
     int arr[] = {1,2,3};
     dbj::sequence sq( arr );

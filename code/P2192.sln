@@ -7,7 +7,15 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "P2192", "P2192-CPP\P2192.vc
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "P2192-CAPI", "P2192-C\P2192-CAPI.vcxproj", "{85DDD13A-CA8C-422D-8E33-0B0A6C3787BA}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "common", "common\common.vcxproj", "{A361365D-9E41-45B3-A836-A7DD5BE4720A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3F63E41E-D89D-448E-A26E-1047B3DD120C}"
+	ProjectSection(SolutionItems) = preProject
+		common\common.h = common\common.h
+		common\config.h = common\config.h
+		common\dbj_dbg.h = common\dbj_dbg.h
+		common\http_status_codes.h = common\http_status_codes.h
+		common\local_type_traits.h = common\local_type_traits.h
+		common\posix_codes_messages.h = common\posix_codes_messages.h
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,14 +41,6 @@ Global
 		{85DDD13A-CA8C-422D-8E33-0B0A6C3787BA}.Release|x64.Build.0 = Release|x64
 		{85DDD13A-CA8C-422D-8E33-0B0A6C3787BA}.Release|x86.ActiveCfg = Release|Win32
 		{85DDD13A-CA8C-422D-8E33-0B0A6C3787BA}.Release|x86.Build.0 = Release|Win32
-		{A361365D-9E41-45B3-A836-A7DD5BE4720A}.Debug|x64.ActiveCfg = Debug|x64
-		{A361365D-9E41-45B3-A836-A7DD5BE4720A}.Debug|x64.Build.0 = Debug|x64
-		{A361365D-9E41-45B3-A836-A7DD5BE4720A}.Debug|x86.ActiveCfg = Debug|Win32
-		{A361365D-9E41-45B3-A836-A7DD5BE4720A}.Debug|x86.Build.0 = Debug|Win32
-		{A361365D-9E41-45B3-A836-A7DD5BE4720A}.Release|x64.ActiveCfg = Release|x64
-		{A361365D-9E41-45B3-A836-A7DD5BE4720A}.Release|x64.Build.0 = Release|x64
-		{A361365D-9E41-45B3-A836-A7DD5BE4720A}.Release|x86.ActiveCfg = Release|Win32
-		{A361365D-9E41-45B3-A836-A7DD5BE4720A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
