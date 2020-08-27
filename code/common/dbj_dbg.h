@@ -58,7 +58,7 @@ dbj_error_label:
 // dbj added 
 // show the expression and the value it yields to
 #ifdef NDEBUG
-DBG(FMT_, X_)
+#define DBG(FMT_, X_)
 #else  
 #define DBG(FMT_,X_) dbj_debug( "%s = " FMT_, #X_, (X_) )
 #endif
@@ -67,7 +67,7 @@ DBG(FMT_, X_)
 #define dbj_jump_unless(A) if (!(A)) { goto dbj_error_label ; }
 
 #ifdef NDEBUG
-dbj_error_unless(A, M, ...) (void)0
+#define dbj_error_unless(A, M, ...) (void)0
 #else
 #define dbj_error_unless(A, M, ...) if (!(A)) { fprintf(stderr, M "\n", ##__VA_ARGS__); goto dbj_error_label ; }
 #endif
