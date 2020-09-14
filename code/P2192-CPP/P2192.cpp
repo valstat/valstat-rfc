@@ -10,6 +10,7 @@
 #include "applicability.h"
 #include "modern_fopen.h"
 #include "oo+valstat.h"
+#include "discussion_solution.h"
 
 #ifdef __clang__
 #define  PURE_FUNCTION __attribute__((const))
@@ -22,14 +23,12 @@ static void ad_hoc_testing()
 {
 	using std::cout;
 
-	// value and status are value types
-	// managed by std::optional
-	auto [ value, errcode ] = dbj::valstat< int, int >{ {}, EINVAL };
+	auto [name, errc] = wg21::FindUsersCity(); 
 
-	/* ERROR metastate: empty value and non empty status */
-	if (! value && errcode ) {
-		/* fetching the errcode value */
-		cout << strerror( *errcode );
+	if (name)
+			cout << "OK or INFO metatstate, name is:" << name;
+	if ( int(errc) > 0 ) {
+		cout << "status: " << strerror( int(errc) );
 	}
 }
 

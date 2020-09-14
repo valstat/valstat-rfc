@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="applicability.h" />
     <ClInclude Include="dbj_valstat.h" />
+    <ClInclude Include="discussion_solution.h" />
     <ClInclude Include="experimental.h" />
     <ClInclude Include="http_client.h" />
     <ClInclude Include="lib\dbj_dbg.h" />

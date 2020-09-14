@@ -53,6 +53,9 @@
     <ClInclude Include="experimental.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="discussion_solution.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="P2192.cpp">
