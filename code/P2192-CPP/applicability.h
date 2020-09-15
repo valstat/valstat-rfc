@@ -118,12 +118,12 @@ namespace dbj::valstat_testing {
 
 		 vortex_data(vortex_data&& other_)
 		 {
-			 using std::swap();
+			 using std::swap ;
 			 std::swap( this->the_data_, other_.the_data_ );
 		 }
 		 vortex_data& operator = (vortex_data&& other_)
 		 {
-			 using std::swap();
+			 using std::swap ;
 			 std::swap(this->the_data_, other_.the_data_);
 		 }
 

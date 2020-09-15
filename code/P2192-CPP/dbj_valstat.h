@@ -1,8 +1,9 @@
 #pragma once
 
 #include "std_valstat.h"
-
+#ifdef __clang__
 #include "../common/http_status_codes.h"
+#endif
 
 #define DBJ_USING_IOSTREAM
 #include "../common/posix_codes_messages.h"
@@ -29,11 +30,12 @@ namespace dbj {
 	template <typename T >
 	using posix_valstat = dbj::valstat< T, dbj_errc >;
 
+#ifdef __clang__
 	// reality check tels us there are oceans of code
 	// where http_status_code is predefined to exist as C code
 	// so we simulate that relity here too
 	// "lib/http_status_codes.h" is C code
 	template <typename T >
 	using http_valstat = dbj::valstat< T, http_status_code >;
-
+#endif
 }

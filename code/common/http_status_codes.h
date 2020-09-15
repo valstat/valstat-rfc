@@ -147,7 +147,7 @@ extern "C" {
 		{
 
 #ifndef __clang__
-#error 2020-08-01 DBJ -- It turns out MSVC can not do compound literals yet?
+#error 2020-08-01 DBJ -- It turns out CL extern "C" can not do compound literals yet?
 #endif // ! __clang__
 
 			/*####### 1xx - Informational #######*/

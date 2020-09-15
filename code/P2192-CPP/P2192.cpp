@@ -11,6 +11,7 @@
 #include "modern_fopen.h"
 #include "oo+valstat.h"
 #include "discussion_solution.h"
+#include "discussion_solution_chatty_version.h"
 
 #ifdef __clang__
 #define  PURE_FUNCTION __attribute__((const))
@@ -37,7 +38,8 @@ void test_win32_valstat();
 
 int main ( int , char ** argv )  
 {
-	wg21::test_valsta_using_wg21_debate();
+	// wg21::test_valsta_using_wg21_debate();
+	wg22::test();
 
 #if 0
 
