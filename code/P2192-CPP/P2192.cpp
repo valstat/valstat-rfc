@@ -37,6 +37,10 @@ void test_win32_valstat();
 
 int main ( int , char ** argv )  
 {
+	wg21::test_valsta_using_wg21_debate();
+
+#if 0
+
 	ad_hoc_testing();
 
 	stl_valstat_test();
@@ -54,6 +58,6 @@ int main ( int , char ** argv )
 	//archived
 	//test_using_two_pointers();
 	//test_using_two_optionals();
- 
+#endif // 0
   return EXIT_SUCCESS ;
 }
