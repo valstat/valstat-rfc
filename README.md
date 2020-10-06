@@ -2,9 +2,11 @@
 
 *As soon as we started programming, we found to our surprise that it wasn't as easy to get programs right as we had thought. Debugging had to be discovered. I can remember the exact instant when I realized that a large part of my life from then on was going to be spent in finding mistakes in my own programs.* —Maurice Wilkes discovers bugs, 1949 
 
-Ultimately this is an effort to help eradicate programming errors. After several decades of being involved in all levels of computer programming, I might humbly add to Mr Wilkes observation: Very early in the process we have discovered that not every programmer knows exactly how to implement the requirement and is equally likely not fully able to do so.
+ "... If you look at the source of your program, you'll notice routines that you call, but which you didn't implement..." -- Peter Van Der Linden
 
-This is not because programmers ( me included ) are less able to understand or learn. This is because programmers are very often supposed to implement what an ad-hoc software development lack of organization sends the programmers way.
+Ultimately this is an effort to help eradicate programming errors. After a lot of time spent being involved in all levels of computer programming, I might humbly add to Mr Wilkes observation: Very early in the process we have discovered that not every programmer knows exactly how to implement the requirement and is equally likely not fully able to do so.
+
+This is not because programmers are less able to understand or learn. This is because programmers are very often supposed to implement what an software development lack of organization sends the programmers way.
 
 Thus software diagnostics tools, testing concepts and programming idioms, are necessary to decouple from a constant and sometimes dramatic change in requirements. Or simply, lack of clear requirements.
 
