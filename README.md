@@ -32,7 +32,6 @@ Next release to be published: [R2](P2192R2.md).
 
 
 - Here we have a folder with a number of [supporting documents](./supporting_documents/) 
-- and some [supporting code](./code/) too. 
 - Including a [folder with various pieces of information](./kb_documents/) ready to be included and reused in some larger documents.
 
 ### Contact
