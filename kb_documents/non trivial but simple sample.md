@@ -72,6 +72,11 @@ Barry Revzin
 
 ## DBJ metastate solution
 
+Must see the full but short demo here: https://godbolt.org/z/Kz3zc1
+
+- metastate paradigm shift
+- simplicity is not idiocy
+
 ```cpp
 // ignore the value, check it there is a status
 #define check_return(VS) if ( int(VS.status) > 0) return {0, VS.status}
@@ -92,6 +97,5 @@ Barry Revzin
 ```
 
 I think one *big* selling point for above is no std lib, no exceptions. 
-And "as of Monday" that code can go into your pacemaker software straight away.
+And "as of Monday" that code can go into your heart into the pacemaker software straight away ;)
 
-https://godbolt.org/z/G4qKGq
