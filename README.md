@@ -26,7 +26,11 @@ std::valstat is an metastate C++ implementation. std::valstat would be instrumen
 
 Next release to be published: [R2](P2192R2.md).
 
-### Additional info
+## The Code
+
+Is in separate repository [HERE](https://github.com/DBJDBJ/metastate_code).
+
+### What is in here
 
 [This](https://github.com/DBJDBJ/metastate) is a repository hosting a development of the standard (ISO) C++ proposal ID: P2192 
 
