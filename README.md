@@ -1,5 +1,5 @@
-# Returns Protocol
-Any call has a return &trade;
+# Valstat Returns Protocol
+Every call has a return &trade;
 
 ## Why?
 
