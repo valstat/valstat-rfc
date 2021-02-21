@@ -1,4 +1,5 @@
-# P2192 -- a Function Return Protocol
+# Returns Protocol
+Any call has a return &trade;
 
 ## Why?
 
@@ -14,13 +15,15 @@ Software diagnostics tools, testing concepts and programming idioms, are necessa
 
 Also. Safe code is slow(er).Dangerous code is fast(er). valstat might help in that proverbial balancing act.Especially in modern distributed systems made up of legacy and modern components, developed in various languages or developed by various organizations.
 
+
+
 ## Paradigm
 
 *"A paradigm is a standard, perspective, or set of ideas. A paradigm is a way of looking at something ... When you change paradigms, you're changing how you think about something..."* [vocabulary.com](https://www.vocabulary.com/dictionary/paradigm)
 
 Valstat is a protocol and an software architecture paradigm. Not yet another error return handling idiom. More precisely valstat as a protocol, is a paradigm about obtaining more information as a result of a function call. 
 
-> Together a protocol and its implementation are assembling an behaviour pattern.
+> Every call has a return&trade;
 
 # Documentation
 
@@ -32,14 +35,17 @@ There is a root document describing the protocol and core concepts. Then there i
 
 
 1. valstat Protocol
+   1. The Root Document
 2. c implementation
    1. planned ISO WG14 proposal 
 3. c++ implementation
-   1. ISO comittee WG21 (LEWG) [Proposal P2192](P2192R3.md)
+   1. [ISO comittee WG](https://github.com/cplusplus/papers/issues/901)21 (LEWG) [Proposal P2192](P2192R3.md)
 4. javascript implementation
 5. c# implementation
 6. go implementation
 
+> Together a protocol and its implementation are assembling an behaviour pattern.
+> 
 ## The Code
 
 Is in separate repository [HERE](https://github.com/DBJDBJ/metastate_code).
