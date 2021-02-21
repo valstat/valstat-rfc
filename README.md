@@ -39,14 +39,14 @@ There is a root document describing the protocol and core concepts. Then there i
 2. c implementation
    1. planned ISO WG14 proposal 
 3. c++ implementation
-   1. [ISO comittee WG](https://github.com/cplusplus/papers/issues/901)21 (LEWG) [Proposal P2192](P2192R3.md)
+   1. [ISO comittee WG21](https://github.com/cplusplus/papers/issues/901) (LEWG) [Proposal P2192](P2192R4.md)
 4. javascript implementation
 5. c# implementation
 6. go implementation
 
 > Together a protocol and its implementation are assembling an behaviour pattern.
 > 
-## The Code
+## The C++ Code
 
 Is in separate repository [HERE](https://github.com/DBJDBJ/metastate_code).
 
