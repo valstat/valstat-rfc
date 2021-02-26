@@ -44,7 +44,7 @@ There is a root document describing the protocol and core concepts. Then there i
 5. c# implementation
 6. go implementation
 
-> Together a protocol and its implementation are assembling an behaviour pattern.
+> Together a protocol and its implementation are assembling an behavior pattern.
 > 
 ## The C++ Code
 
