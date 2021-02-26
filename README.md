@@ -1,5 +1,5 @@
-# Valstat Returns Protocol
-Every call has a return &trade;
+# Valstat Return Protocol
+Every call has a response&trade;
 
 ## Why Valstat?
 
@@ -15,48 +15,34 @@ Software diagnostics tools, testing concepts and programming idioms, are necessa
 
 Also. Safe code is slow(er).Dangerous code is fast(er). valstat might help in that proverbial balancing act.Especially in modern distributed systems made up of legacy and modern components, developed in various languages or developed by various organizations.
 
-
-
 ## Paradigm
 
 *"A paradigm is a standard, perspective, or set of ideas. A paradigm is a way of looking at something ... When you change paradigms, you're changing how you think about something..."* [vocabulary.com](https://www.vocabulary.com/dictionary/paradigm)
 
 Valstat is a protocol and an software architecture paradigm. Not yet another error return handling idiom. More precisely valstat as a protocol, is a paradigm about obtaining more information as a result of a function call. 
 
-> Every call has a return&trade;
+> Every call has a response&trade;
 
 # Documentation
 
-valstat documentation is deliberately technical, short and to the point. Prose is left to be authored in future texts in response to criticizm, comments and clarification requirements.
+valstat documentation is deliberately technical, short and to the point. Prose is left to be authored in future texts in response to future criticisms, comments and clarification requirements.
 
 > valstat protocol is designed to be language agnostic.
 
-There is a root document describing the protocol and core concepts. Then there is a number of documents describing the implementation in few widely used programing languages. More to come.
-
+There is a root document describing the protocol and core concepts. There is also a number of repositories describing the various implementations in few widely used programing languages. 
 
 1. valstat Protocol
-   1. The Root Document
+   1. The language agnostic, conceptual, [root document](VALSTAT.md)
 2. c implementation
    1. planned ISO WG14 proposal 
 3. c++ implementation
-   1. [ISO comittee WG21](https://github.com/cplusplus/papers/issues/901) (LEWG) [Proposal P2192](P2192R4.md)
+   1. [ISO committee WG21](https://github.com/cplusplus/papers/issues/901) ([LEWG](https://github.com/cplusplus/papers/labels/LEWG)) [Proposal P2192](P2192R4.md)
 4. javascript implementation
 5. c# implementation
 6. go implementation
 
 > Together a protocol and its implementation are assembling an behavior pattern.
 > 
-## The C++ Code
-
-Is in separate repository [HERE](https://github.com/DBJDBJ/metastate_code).
-
-### What is in here
-
-[This](https://github.com/DBJDBJ/metastate) is a repository hosting a development of the standard (ISO) C++ proposal ID: P2192 
-
-
-- Here we also have a folder with a number of [supporting documents](./supporting_documents/) 
-- Including a [folder with various pieces of information](./kb_documents/) ready to be included and reused in some larger documents.
 
 ### Contact
 

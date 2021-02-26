@@ -1,7 +1,7 @@
 
 # License DBJ
 
-### Copyright &copy; 2019-2020, Dusan B. Jovanovic (dbj@dbj.org)
+### Copyright &copy; 2019-2021, Dusan B. Jovanovic (dbj@dbj.org)
 
 *All rights reserved.*
 
