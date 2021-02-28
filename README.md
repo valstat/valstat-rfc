@@ -1,6 +1,7 @@
 # Valstat Return Protocol
 Every call has a response&trade;
 
+<!--
 ## Why Valstat?
 
 *As soon as we started programming, we found to our surprise that it wasn't as easy to get programs right as we had thought. Debugging had to be discovered. I can remember the exact instant when I realized that a large part of my life from then on was going to be spent in finding mistakes in my own programs.* —Maurice Wilkes discovers bugs, 1949 
@@ -14,20 +15,24 @@ This is not because programmers are less able to understand or learn. This is be
 Software diagnostics tools, testing concepts and programming idioms, are necessary to decouple from a constant and sometimes dramatic change in project surroundings. Or simply, lack of clear requirements.
 
 Also. Safe code is slow(er).Dangerous code is fast(er). valstat might help in that proverbial balancing act.Especially in modern distributed systems made up of legacy and modern components, developed in various languages or developed by various organizations.
-
+-->
 ## Paradigm
 
 *"A paradigm is a standard, perspective, or set of ideas. A paradigm is a way of looking at something ... When you change paradigms, you're changing how you think about something..."* [vocabulary.com](https://www.vocabulary.com/dictionary/paradigm)
 
-Valstat is a protocol and an software architecture paradigm. Not yet another error return handling idiom. More precisely valstat as a protocol, is a paradigm about obtaining more information as a result of a function call. 
+Valstat is a protocol and an software architecture paradigm. Valstat is not yet another error return handling idiom. More precisely valstat as a protocol, is a paradigm shift about handling function return and handling the response of function call.
 
+## Scope
+
+The scope of Valstat is ambitious: from the micro code level, to the macro, inter system level.
+<!--
 > Every call has a response&trade;
-
+-->
 # Documentation
 
 valstat documentation is deliberately technical, short and to the point. Prose is left to be authored in future texts in response to future criticisms, comments and clarification requirements.
 
-> valstat protocol is designed to be language agnostic.
+> valstat protocol is designed to be platform and language agnostic.
 
 There is a root document describing the protocol and core concepts. There is also a number of repositories describing the various implementations in few widely used programing languages. 
 
