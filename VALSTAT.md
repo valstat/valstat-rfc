@@ -1,4 +1,4 @@
-<h1>valstat - returns handling protocol</h1><!-- omit in toc -->
+<h1>valstat - call/response <!-- returns handling--> protocol</h1><!-- omit in toc -->
  
 | &nbsp;           | &nbsp;                                                |
 | ---------------- | ----------------------------------------------------- |
@@ -17,19 +17,17 @@ There are two ways of constructing a software design: One way is to make it so s
 - [1. Abstract](#1-abstract)
 - [2. Motivation](#2-motivation)
 - [3. The Protocol](#3-the-protocol)
-- [4. Conceptual building blocks](#4-conceptual-building-blocks)
-  - [4.1. VALSTAT structure](#41-valstat-structure)
-  - [4.2. Field](#42-field)
-    - [4.2.1. Occupancy states](#421-occupancy-states)
-  - [4.3. VALSTAT State](#43-valstat-state)
-  - [4.4. The VALSTAT Responder](#44-the-valstat-responder)
-- [5. Why the "two"](#5-why-the-two)
-- [6. VALSTAT and the global IT landscape?](#6-valstat-and-the-global-it-landscape)
-- [7. Conclusions](#7-conclusions)
-- [8. References](#8-references)
-- [9. Appendix: Cross Domains Requirements](#9-appendix-cross-domains-requirements)
-  - [9.1. Appendix: Climate impact](#91-appendix-climate-impact)
-- [10. Appendix: VALSTAT state BNF definition](#10-appendix-valstat-state-bnf-definition)
+  - [3.1. Conceptual building blocks](#31-conceptual-building-blocks)
+  - [3.2. VALSTAT structure](#32-valstat-structure)
+  - [3.3. Field](#33-field)
+    - [3.3.1. Occupancy states](#331-occupancy-states)
+  - [3.4. VALSTAT State](#34-valstat-state)
+  - [3.5. The VALSTAT Responder Behavior](#35-the-valstat-responder-behavior)
+- [4. Why the "two"?](#4-why-the-two)
+- [5. VALSTAT and the IT landscape?](#5-valstat-and-the-it-landscape)
+- [6. Conclusions](#6-conclusions)
+- [7. References](#7-references)
+- [8. Appendix: VALSTAT BNF definition](#8-appendix-valstat-bnf-definition)
 
 ## Revision history<!-- omit in toc -->
 
@@ -49,20 +47,20 @@ This paper describes an software protocol, not language specific implementations
 
 Context: Integration is a common recurring theme in a software development. It is complex and difficult to predict in a feasible level of detail.
 
-Levels of Integration
+Levels of Integration, ordered by the scope width
 
-1. universal
-1. domain
-1. system
-1. application
-1. component
-2. code
+| scope | level
+|-------| -------
+| widest | universal
+|       | domain
+|       | system
+|       | application
+|       | component
+| narrowest      | code
 
-A call/response activity exists an all levels.
+Calling, creating a response, returning a response and handling the response, is activity present an all levels. 
 
-Calling, creating a response, returning a response and handling the response an all levels. 
-
-Resilience requires a common and simple guidance. A standard. A protocol.
+Feasibility of the integration requires a high level of resilience. Integration resilience requires a common and simple guidance. An standard protocol.
 
 <!--
 ### 2.1. Narrow scope 
@@ -97,7 +95,7 @@ A call/response, software activity guided by a protocol is a paradigm shift.
 
 *"A paradigm is a standard, perspective, or set of ideas. A paradigm is a way of looking at something ... When you change paradigms, you're changing how you think about something..."* [vocabulary.com](https://www.vocabulary.com/dictionary/paradigm)
 
-## 4. Conceptual building blocks
+### 3.1. Conceptual building blocks
 
 VALSTAT protocol is based on a structure returned as a consequence of a call.
 
@@ -109,32 +107,25 @@ CALLER --> (local/remote call) --> RESPONDER
 
 CALLER <-- (VALSTAT structure) <-- RESPONDER
 ```
-<font size=2>(We use BNF. [Backus–Naur form or Backus normal form (BNF)](https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form) is a metasyntax notation for context-free grammars.)</font>
-```
---> ::= { remote | local } {"call" | "data flow"}
-```
-
-IMPORTANT: `CALLER` or `RESPONDER` can reside inside the same or different, application or system domains. Local or remote to each other.
+Locality: `CALLER` or `RESPONDER` can reside inside the same or different, application or system domains. Local or remote to each other.
 
 **Response using logic is divided in two steps**
 
-As part of response handling activity, the two steps logic is always present: 
+As part of response handling activity, regardless of platform or language, the two steps logic is always present: 
 
 - step one -- Is something returned? 
 - step two -- Can I use it?   
 
-Conceptually valstat protocol is the "two steps" returns processing:
+Conceptually valstat protocol is the "two steps" return processing:
 
 1. use the structure returned to determine the step two
     - not using the type system or actual values returned
 2. use the content returned
     - using the type system and values returned
 
-That is a two step logic, that can be applied across many software development platforms and run-time domains.
+That is a two step logic, that can be applied across many (if not all) software development platforms and run-time domains.
 
-Going further, the VALSTAT structure is made of two fields. 
-
-### 4.1. VALSTAT structure
+### 3.2. VALSTAT structure
 
 VALSTAT structure is an record made of two fields:
 
@@ -151,34 +142,35 @@ begin record VALSTAT
 eof record
 ```
 -->
-### 4.2. Field
+### 3.3. Field
 
-VALSTAT "field" is analogous to the database field. <!-- The name "field" is the name for an "single piece of information" -->
+VALSTAT "field" is analogous to the database field. "field" is the name for an "single piece of information".
 
-In database theory also "field" is: [*"a particular piece of data encapsulated within a class or object"*](https://en.wikipedia.org/wiki/Field_(computer_science)).
+In database theory "field" is: [*"a particular piece of data encapsulated within a class or object"*](https://en.wikipedia.org/wiki/Field_(computer_science)).
 
-Key attributes of a Valstat field concept are:
+Key attributes of a field are:
 
 1. field always exists
 2. field can be empty or "contain a value"
 
-#### 4.2.1. Occupancy states
+#### 3.3.1. Occupancy states
 
-Field can be in two "occupancy states"  (authors term) . We will call them : "empty" and "occupied". For example, it is a well known and adopted fact: database field always exist, but it can be empty.
+Field can be in two "occupancy states"  (authors term) . We will call them : "empty" and "occupied". 
 
 ![field two occupancy states](media/field%20occupancy%20states.png)
 
 In software development terms field is an object **potentially** holding only one value. It might be tested if it is "empty" , or occupied aka "holding a value".
 
-### 4.3. VALSTAT State 
+### 3.4. VALSTAT State 
 
 VALSTAT State is an boolean result of AND combination of occupancy states of two VALSTAT structure fields. 
 
-Combination of two fields value *and* status occupancies is giving four possible states. 
+Combination of two fields value *and* status occupancies is giving four possible states.
 
-We will name them for further use.
+![valstat record state decoding](media/VALSTAT%20Record%20States.png)
+Valstat Record state decoding
 
-| Meta State Tag | Value occupancy  | op | Status occupancy  |
+| State Tag | Value occupancy  | op | Status occupancy  |
 | ----- | ------- | ------- | --- |
 | **Info**  | Has value | AND | Has value |
 | **OK**    | Has value | AND | Empty     |
@@ -191,9 +183,9 @@ In adopting the returned VALSTAT structure two step handling we do not immediate
 
 In the most (all?) programing languages, there is no need for existence of some dedicated VALSTAT types.  Returned structure handling, step one is only about the relationship between two fields states of occupancy.
 
-VALSTAT state capturing is the act of decoding the relationship between occupancy states of its two fields.
+VALSTAT state decoding is the act of decoding the relationship between occupancy states of its two fields.
 
-Following is synopsis of capturing the four possible VALSTAT states:
+Following is synopsis of decoding one of the four possible VALSTAT states:
 
 ```cpp
 // pseudo code
@@ -208,11 +200,9 @@ Following is synopsis of capturing the four possible VALSTAT states:
   if ( ! is_empty( value ) &&   is_empty( status )  { /* state: error*/ }
   if ( ! is_empty( value ) && ! is_empty( status )  { /* state: empty*/ }
 ```
-That synopsis can be implemented, almost as it is, in many languages: C, JavaScript, Python, GO, Java etc. 
+That synopsis can be implemented, almost as it is, in many languages: C, JavaScript, Python, GO, Java, C# etc. 
 
-NOTE: in particular language definition of the VALSTAT we very often do not need `is_empty()` function implemented. 
-
-Here is canonical C++ example.
+NOTE: in particular language definition of the VALSTAT we very often do not need `is_empty()` function implemented. Here is canonical C++ as an example.
 
 ```cpp
 // calling
@@ -226,93 +216,91 @@ auto [value, status] = valstat_enabled_function ();
   if ( ! value && ! status )  { /* empty*/ }
 ```
 
-Protocol return handling code is neatly divided in steps. VALSTAT handling logic serves well for arriving to cleaner idioms for complex call consumption code. 
+VALSTAT Protocol return handling code is neatly divided in two steps. VALSTAT handling logic serves well for arriving to cleaner idioms for complex call consumption code. 
 
-The aded benefits are immediate applicability and ability in addressing the requirements across domains.
+### 3.5. The VALSTAT Responder Behavior
 
-### 4.4. The VALSTAT Responder
+From the callable entity, an VALSTAT Responder is "signaling back" following the encapsulated application logic; creating and returning the appropriate VALSTAT structure.
 
-From the callable entity VALSTAT Responder is "signaling back" following the internal logic and creating and returning the appropriate VALSTAT structure.
-
-The VALSTAT structure declaration.
+The VALSTAT structure pseudo code declaration.
 ```
 begin record VALSTAT  
-     declare field VALUE
-     declare field STATUS
+     field VALUE
+     field STATUS
 eof record
 ```
-RESPONDER signaling the "OK" state
+RESPONDER behavior consists of creating the appropriate VALSTAT record. RESPONDER signaling the "OK" state:
 ```
 // pseudo code
 return VALSTAT  
+// occupied value field and empty status field 
      VALUE = (value), STATUS = (NULL)
 eof return
 ```
-Both `value` and `NULL` are meaningful as defined by the application domain. Or a system domain. On the higher level there are inter system formats like JSON or XML.
-
-RESPONDER signaling the "INFO" state
+Both `value` and `NULL` are meaningful software entities, as defined by their application domain. RESPONDER signaling the "INFO" state
 ```
 return VALSTAT  
+// occupied value field and occupied status field 
      VALUE = (value), STATUS = (information)
 eof return
 ```
 RESPONDER signaling the "ERROR" state
 ```
 return VALSTAT  
+// empty value field and occupied status field 
      VALUE = (NULL), STATUS = (information)
 eof return
 ```
 RESPONDER signaling the "EMPTY" state
 ```
 return VALSTAT  
+// empty value field and empty status field 
      VALUE = (NULL), STATUS = (NULL)
 eof return
 ```
 
-## 5. Why the "two"
+## 4. Why the "two"?
 
-Context depend on the domain.
-
-As ever in the information systems, the meaning of the information is context specific.
+Context depend on the domain. As ever in the information systems, the meaning of the information is context specific.
 
 VALSTAT is a protocol for light **and** efficient information passing. 
 
-VALSTAT is not a messaging protocol. Contrast it to some protocol using (for example) XML (or JSON) documents for functions calling and function return values. Author is not aware of such a protocol. But anything between that and record of two fields is not as light and not as efficient as VALSTAT structure.
+VALSTAT is not a messaging protocol. Contrast it to some protocol using (for example) XML (or JSON) documents for functions calling and function return values. Author is not aware of such a protocol. But anything between that and VALSTAT record of two fields, is not as light and not as efficient as VALSTAT structure.
 
-And going bellow the two, degenerates back to the "error value return" anti-pattern.
+And going bellow the two, degenerates back to the "single error value return" anti-pattern.
 
 
-## 6. VALSTAT and the global IT landscape?
+## 5. VALSTAT and the IT landscape?
 
-VALSTAT protocol value lies in it's deliberate simplicity, aiding in solving the strict operational requirements and interoperability issues.
+VALSTAT protocol value lies in it's deliberate simplicity, still capable aiding in solving the software operational and interoperability issues.
 
-Modern software architectures are clusters of inter-operating but separated components and even sub-systems. One thorny big issue, is solving universally applicable returns handling, across language and system  barriers.  And this is where VALSTAT as a protocol might help. (think JSON format for VALSTAT protocol) 
+Modern software architectures are clusters of inter-operating but separated components and even sub-systems. One thorny big infrastructure issue, is solving universally applicable returns handling, across language and system  barriers.  And this is where VALSTAT as a protocol might help. (think JSON format for VALSTAT protocol) 
 
-Universal adoption of the VALSTAT requires no changes in any of the software development languages. It just has ot be universally used.
+Universal adoption of the VALSTAT requires no changes in any of the software development languages. It just has to be universally adopted and used.
 
 <!-- div class="page"/ -->
 
-## 7. Conclusions
+## 6. Conclusions
 
 Hopefully proving the benefits of evolution of error code handling into returns handling protocol does not need much convincing. 
 
-There are many real situations where the VALSTAT paradigm can be successfully used. From a micro to the macro level. 
+There are many real situations where the VALSTAT protocol can be successfully used. From a micro to the macro level. 
 
 As an common returns protocol, VALSTAT state requires to be ubiquitously adopted to become truly an instrumental to widespread interoperability. From micro to macro levels. From inside the code to inter component calls. From inside an project to inter systems situations.
 
-VALSTAT protocol is multilingual in nature. Thus adopters from any imperative language are free to implement it in any way they wish too. The key requirement is: interoperability. 
+VALSTAT protocol is multilingual in nature. Thus adopters from any imperative language are free to implement it in any way they wish too. For non coherent groups of adopters, the key requirement is: interoperability. 
 
-Authors primary aim is to achieve widespread adoption of this paradigm. As shown VALSTAT is more than just solving the "error-signalling problem". It is an paradigm, instrumental in solving the often hard and orthogonal set of run-time requirements.
+Authors primary aim is to suggest widespread adoption of this paradigm. As shown VALSTAT is more than just solving the "error-signalling problem". It is an paradigm, instrumental in solving the often hard and orthogonal set of run-time operational requirements.
 
-It works on the micro level but VALSTAT aims high. And it's proposed scope is rather wide. But it is a humble protocol. It is just an simple and effective way of building bridges over one deeply fragmented part of the vast global IT territory. While imposing extremely little on adopters implementations and leaving the non-adopters to "proceed as before" if the wish too.
+VALSTAT aims high. And it's proposed scope is rather wide. But it is a humble protocol. It is just an simple and effective way of building bridges over deeply fragmented parts of the vast global IT infrastructure. While in the same time imposing extremely little on adopters implementations and leaving the non-adopters to "proceed as before" if they wish too.
 
-Obstacles to VALSTAT paradigm adoption are far from just technical. But here is at least an immediately usable attempt to chart the way out.
+Obstacles to VALSTAT adoption are far from just technical. But here is at least an immediately usable attempt to chart the way out.
 
 ----------------------
 
 <!-- <div class="page"/> -->
 
-## 8. References
+## 7. References
 
 - <a id="ref1">[1]</a> B. Stroustrup (2018) **P0976: The Evils of Paradigms Or Beware of one-solution-fits-all thinking**, https://www.stroustrup.com/P0976-the-evils-of-paradigms.pdf
 
@@ -324,7 +312,8 @@ Obstacles to VALSTAT paradigm adoption are far from just technical. But here is 
 
 <!-- div class="page"/ -->
 
-## 9. Appendix: Cross Domains Requirements
+<!--
+## 8. Appendix: Cross Domains Requirements
 
 **Run-Time **
 
@@ -332,9 +321,9 @@ One motivation of this paper is to try and offer an "over arching", but simple e
 
 **Interoperability**
 
-Each solution to often strict run-time requirements is one nail in the coffin of interoperability. In danger of sounding like offering an panacea,  author will also draw the attention to the malleability of the VALSTAT paradigm to be implemented with wide variety of languages used in developing components of an modern distributed system. 
+Each solution to often strict run-time requirements is one nail in the coffin of interoperability. In danger of sounding like offering an panacea,  author will also draw the attention to the malleability of the VALSTAT paradigm to be implemented with wide variety of languages used in developing components of an modern distributed system.
 
-Usability of an API is measured on all levels: from the code level, to the distributed system level. In order to design an API to be **feasibly** usable it has to be interoperable. That leads to three core requirements of
+Usability of an API is measured on all levels: from the code level, to the distributed system level. In order to design an API to be **feasibly** usable it has to be **interoperable**. That leads to three core requirements of
 
 Interoperable API core requirements (to start with)
 
@@ -353,7 +342,7 @@ Some of the designed-in, simplicity in this paper is an result of deliberate att
 
 It is important to understand there are inter domain interoperability requirements. Examples: [WASM](https://developer.mozilla.org/en-US/docs/WebAssembly/C_to_wasm), [Node.JS](https://nodejs.org/api/addons.html), [Android](https://developer.android.com/studio/projects/add-native-code) and such. 
 
-### 9.1. Appendix: Climate impact
+### 8.1. Appendix: Climate impact
 
 This is operational environment requirement. Operational environment can be satellite in an orbit circling the earth, or a data center on Island. 
 
@@ -362,18 +351,19 @@ Side info: it is not just hardware energy consumption, it is also energy require
 Solving data centers energy spending has become an imperative. Most of the server side software is written in C/C++ . Pressure is on, to design and develop with energy consumption as an primary requirement. 
 
 [This one is not a "simple" requirement](https://hal.archives-ouvertes.fr/hal-01496266/document). [Somewhat paradoxically](https://youtu.be/koTf7u0v41o) this category of requirements requires less and less code and more and more performance in the same time. Smaller executables means less energy spent on that executable running and less energy for cooling the CPU running it.
+-->
 
-## 10. Appendix: VALSTAT state BNF definition
+## 8. Appendix: VALSTAT BNF definition
 
 ```
 ; occupancy states
 empty     ::= true | false
-has_value ::= true | false
-occupancy_state ::== empty | has_value
+occupied  ::= true | false
+occupancy_state ::== empty | occupied
 
-; field is made of
+; field is logically made of
 ; occupancy state and value
-field ::=  occupancy_state AND value
+field ::=  { occupancy_state , value }
 
 ; 'value' and 'status' are fields
 value  ::= field
@@ -385,7 +375,7 @@ status ::= field
 VALSTAT state ::= is_empty(value) AND is_empty(status)
 
 ; valstat is a record made of two fields
-valsat ::= value AND status
+valsat ::= { value , status }
 ``` 
 
 [Backus–Naur form or Backus normal form (BNF)](https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form) is a metasyntax notation for context-free grammars.
