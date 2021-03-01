@@ -15,17 +15,17 @@ This is not because programmers are less able to understand or learn. This is be
 Software diagnostics tools, testing concepts and programming idioms, are necessary to decouple from a constant and sometimes dramatic change in project surroundings. Or simply, lack of clear requirements.
 
 Also. Safe code is slow(er).Dangerous code is fast(er). valstat might help in that proverbial balancing act.Especially in modern distributed systems made up of legacy and modern components, developed in various languages or developed by various organizations.
--->
+
 ## Paradigm
 
 *"A paradigm is a standard, perspective, or set of ideas. A paradigm is a way of looking at something ... When you change paradigms, you're changing how you think about something..."* [vocabulary.com](https://www.vocabulary.com/dictionary/paradigm)
-
-Valstat is a protocol and an software architecture paradigm. Valstat is not yet another error return handling idiom. More precisely valstat as a protocol, is a paradigm shift about handling function return and handling the response of function call.
-
+-->
+Valstat is a protocol and an software architecture paradigm. Valstat is not yet another error handling idiom. More precisely valstat as a protocol, is a paradigm shift about unified logic of creating a call response and handling the payload returned.
+<!--
 ## Scope
 
 The scope of Valstat is ambitious: from the micro code level, to the macro, inter system level.
-<!--
+
 > Every call has a response&trade;
 -->
 # Documentation
