@@ -1,6 +1,6 @@
-# Valstat Return Protocol
-Every call has a response&trade;
+# Valstat is a Call/Response Protocol
 
+*"Some people are uncomfortable with silences. Not me. I've never cared much for call and response..." - Author: Miranda July*
 <!--
 ## Why Valstat?
 
