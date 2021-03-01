@@ -5,7 +5,7 @@
 | Document Number: | **DBJ0001**                                           |
 | Date             | 2021-01-01                                            |
 | Audience         |                       |
-| Author         | Dusan B. Jovanovic ( [dbj@dbj.org](mailto:dbj@dbj.org) ) |
+| Author           | Dusan B. Jovanovic ( [dbj@dbj.org](mailto:dbj@dbj.org) ) |
 <h4>
 Simplicity is the ultimate sophistication -- Leonardo Da Vinci
 </h4>
@@ -17,17 +17,17 @@ There are two ways of constructing a software design: One way is to make it so s
 - [1. Abstract](#1-abstract)
 - [2. Motivation](#2-motivation)
 - [3. The Protocol](#3-the-protocol)
-  - [3.1. Conceptual building blocks](#31-conceptual-building-blocks)
+  - [3.1. Building Blocks](#31-building-blocks)
   - [3.2. VALSTAT structure](#32-valstat-structure)
   - [3.3. Field](#33-field)
     - [3.3.1. Occupancy states](#331-occupancy-states)
   - [3.4. VALSTAT State](#34-valstat-state)
   - [3.5. The VALSTAT Responder Behavior](#35-the-valstat-responder-behavior)
-- [4. Why the "two"?](#4-why-the-two)
-- [5. VALSTAT and the IT landscape?](#5-valstat-and-the-it-landscape)
-- [6. Conclusions](#6-conclusions)
-- [7. References](#7-references)
-- [8. Appendix: VALSTAT BNF definition](#8-appendix-valstat-bnf-definition)
+- [4. The Logic](#4-the-logic)
+  - [4.1. Why the "two"?](#41-why-the-two)
+  - [4.2. IT landscape matters](#42-it-landscape-matters)
+- [5. Conclusions](#5-conclusions)
+- [6. References](#6-references)
 
 ## Revision history<!-- omit in toc -->
 
@@ -37,7 +37,7 @@ R1: created
 
 ## 1. Abstract
 
-This is a proposal about logical, feasible, lightweight and effective protocol for handling the call/response activity in an both platform and language agnostic manner.
+This is a proposal about logical, feasible, lightweight and effective protocol for handling the call/response activity, decoupled from both platforms and languages.
 
 This paper describes an software protocol, not language specific implementations or platform specific solutions.
 
@@ -45,9 +45,9 @@ This paper describes an software protocol, not language specific implementations
 
 ## 2. Motivation 
 
-Context: Integration is a common recurring theme in a software development. It is complex and difficult to predict in a feasible level of detail.
+Economy of software production is an ever more delicate balancing act. Because of its prominent costs, feasible integration is a common recurring theme in a software development. It is complex and difficult to predict and solve in a feasible level of detail. Thus it contributes to the raising costs of software.
 
-Levels of Integration, ordered by the scope width
+Levels of Integration, ordered by the scope 
 
 | scope | level
 |-------| -------
@@ -58,9 +58,9 @@ Levels of Integration, ordered by the scope width
 |       | component
 | narrowest      | code
 
-Calling, creating a response, returning a response and handling the response, is activity present an all levels. 
+Calling, creating a response, returning a response and handling the response, is activity permeating all levels. 
 
-Feasibility of the integration requires a high level of resilience. Integration resilience requires a common and simple guidance. An standard protocol.
+Feasibility of the integration requires a high level of resilience. Integration resilience requires a common and simple guidances. VALSTAT is attempt to provide on of those guidances, in the format of a standard protocol.
 
 <!--
 ### 2.1. Narrow scope 
@@ -91,13 +91,15 @@ Wider scope motivation is to develop an paradigm to aid solving following three 
 -->
 ## 3. The Protocol
 
+By "call" in here we mean the "call" in its most overarching definition. This protocol is applicable regardless of the call/response category. Remote, Local, Synchronous, asynchronous, direct, message based, RPC, HTTP, or whatever.
+
 A call/response, software activity guided by a protocol is a paradigm shift.
 
 *"A paradigm is a standard, perspective, or set of ideas. A paradigm is a way of looking at something ... When you change paradigms, you're changing how you think about something..."* [vocabulary.com](https://www.vocabulary.com/dictionary/paradigm)
 
-### 3.1. Conceptual building blocks
+### 3.1. Building Blocks
 
-VALSTAT protocol is based on a structure returned as a consequence of a call.
+VALSTAT protocol central theme is a lightweight structure returned by "Responder" to the "Caller", as a consequence of a call.
 
 - `CALLER` is software entity calling the local or remote function or component. 
 - `RESPONDER` is a software entity creating a VALSTAT structure to be returned to a `CALLER`
@@ -130,8 +132,8 @@ That is a two step logic, that can be applied across many (if not all) software 
 VALSTAT structure is an record made of two fields:
 
 - VALSTAT record
-  - `VALUE`
-  - `STATUS`
+  - VALUE
+  - STATUS
 <!--
 Language agnostic aka pseudo code
 
@@ -163,7 +165,7 @@ In software development terms field is an object **potentially** holding only on
 
 ### 3.4. VALSTAT State 
 
-VALSTAT State is an boolean result of AND combination of occupancy states of two VALSTAT structure fields. 
+<!-- VALSTAT State is an boolean result of AND combination of occupancy states of two VALSTAT structure fields. -->
 
 Combination of two fields value *and* status occupancies is giving four possible states.
 
@@ -188,19 +190,18 @@ VALSTAT state decoding is the act of decoding the relationship between occupancy
 Following is synopsis of decoding one of the four possible VALSTAT states:
 
 ```cpp
+// (c) by dbj@dbj.org
 // pseudo code
-// two fields are input into the step one:
-// capturing one of four possible VALSTAT states
-// In step one types or values of the
-// content returned are not used
-// they are irrelevant in step one
+// step one: capturing one of four possible VALSTAT states
+// In step one types or values of the content returned are not used
+// just the occupancy states 
 // 
   if (   is_empty( value ) &&   is_empty( status )  { /* state: info */ }
   if (   is_empty( value ) && ! is_empty( status )  { /* state: ok   */ }
   if ( ! is_empty( value ) &&   is_empty( status )  { /* state: error*/ }
   if ( ! is_empty( value ) && ! is_empty( status )  { /* state: empty*/ }
 ```
-That synopsis can be implemented, almost as it is, in many languages: C, JavaScript, Python, GO, Java, C# etc. 
+On the code level, that synopsis can be implemented, almost as it is, in many languages: C, JavaScript, Python, GO, Java, C# etc. 
 
 NOTE: in particular language definition of the VALSTAT we very often do not need `is_empty()` function implemented. Here is canonical C++ as an example.
 
@@ -259,9 +260,11 @@ return VALSTAT
 eof return
 ```
 
-## 4. Why the "two"?
+## 4. The Logic
 
-Context depend on the domain. As ever in the information systems, the meaning of the information is context specific.
+### 4.1. Why the "two"?
+
+Context depends on the domain. As ever in the information systems, the meaning of the information is context specific.
 
 VALSTAT is a protocol for light **and** efficient information passing. 
 
@@ -270,7 +273,7 @@ VALSTAT is not a messaging protocol. Contrast it to some protocol using (for exa
 And going bellow the two, degenerates back to the "single error value return" anti-pattern.
 
 
-## 5. VALSTAT and the IT landscape?
+### 4.2. IT landscape matters
 
 VALSTAT protocol value lies in it's deliberate simplicity, still capable aiding in solving the software operational and interoperability issues.
 
@@ -280,7 +283,7 @@ Universal adoption of the VALSTAT requires no changes in any of the software dev
 
 <!-- div class="page"/ -->
 
-## 6. Conclusions
+## 5. Conclusions
 
 Hopefully proving the benefits of evolution of error code handling into returns handling protocol does not need much convincing. 
 
@@ -300,15 +303,19 @@ Obstacles to VALSTAT adoption are far from just technical. But here is at least 
 
 <!-- <div class="page"/> -->
 
-## 7. References
+## 6. References
 
-- <a id="ref1">[1]</a> B. Stroustrup (2018) **P0976: The Evils of Paradigms Or Beware of one-solution-fits-all thinking**, https://www.stroustrup.com/P0976-the-evils-of-paradigms.pdf
+- <a id="ref_FIELD">[FIELD]</a> Field (computer science), https://en.wikipedia.org/wiki/Field_(computer_science)
 
-- <a id="ref2">[2]</a> Wikipedia **Empty String**, https://en.wikipedia.org/wiki/Empty_string
+- <a id="ref_DATA_FIELD">[DATA_FIELD]</a> Data Fields, http://www.sliccware.com/WebHelp/Load_Definition/Definitions/Data_Fields/Data_Fields.htm
 
-- <a id="ref3">[3]</a> "Your Dictionary" **Definition of empty**,  https://www.yourdictionary.com/empty
+- <a id="ref_STROUSTRUP">[STROUSTRUP]</a> B. Stroustrup (2018) **P0976: The Evils of Paradigms Or Beware of one-solution-fits-all thinking**, https://www.stroustrup.com/P0976-the-evils-of-paradigms.pdf
 
-- <a id="ref4">[4]</a> Joel Spolsky, **Joel On Software -- 13: Exceptions**, https://www.joelonsoftware.com/2003/10/13/13/
+- <a id="ref_EMPTY_STRING">[EMPTY_STRING]</a> Wikipedia **Empty String**, https://en.wikipedia.org/wiki/Empty_string
+
+- <a id="ref_EMPTY">[EMPTY]</a> "Your Dictionary" **Definition of empty**,  https://www.yourdictionary.com/empty
+
+- <a id="ref_EXCEPTIONS">[EXCEPTIONS]</a> Exception handling, https://en.wikipedia.org/wiki/Exception_handling
 
 <!-- div class="page"/ -->
 
@@ -352,7 +359,7 @@ Solving data centers energy spending has become an imperative. Most of the serve
 
 [This one is not a "simple" requirement](https://hal.archives-ouvertes.fr/hal-01496266/document). [Somewhat paradoxically](https://youtu.be/koTf7u0v41o) this category of requirements requires less and less code and more and more performance in the same time. Smaller executables means less energy spent on that executable running and less energy for cooling the CPU running it.
 -->
-
+<!--
 ## 8. Appendix: VALSTAT BNF definition
 
 ```
@@ -379,3 +386,5 @@ valsat ::= { value , status }
 ``` 
 
 [Backus–Naur form or Backus normal form (BNF)](https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form) is a metasyntax notation for context-free grammars.
+
+-->
