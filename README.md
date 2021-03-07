@@ -26,7 +26,7 @@ Valstat is a protocol and an software architecture paradigm. Valstat is not yet 
 
 The scope of Valstat is ambitious: from the micro code level, to the macro, inter system level.
 
-> Every call has a response&trade;
+> Every caller has a responder&trade;
 -->
 # Documentation
 
