@@ -193,13 +193,20 @@ Following is synopsis of decoding one of the four possible VALSTAT states:
 // (c) by dbj@dbj.org
 // pseudo code
 // step one: capturing one of four possible VALSTAT states
-// In step one types or values of the content returned are not used
-// just the occupancy states 
-// 
-  if (   is_empty( value ) &&   is_empty( status )  { /* state: info */ }
-  if (   is_empty( value ) && ! is_empty( status )  { /* state: ok   */ }
-  if ( ! is_empty( value ) &&   is_empty( status )  { /* state: error*/ }
-  if ( ! is_empty( value ) && ! is_empty( status )  { /* state: empty*/ }
+```
+In step one types or values of the content returned are not used just the occupancy states  
+```cpp
+// empty AND empty
+  if (   is_empty( value ) &&   is_empty( status )  { /* state: empty */ }
+
+// empty AND occupied  
+  if (   is_empty( value ) && ! is_empty( status )  { /* state: error   */ }
+
+// occupied AND empty
+  if ( ! is_empty( value ) &&   is_empty( status )  { /* state: ok */ }
+
+// empty AND empty  
+  if ( ! is_empty( value ) && ! is_empty( status )  { /* state: info*/ }
 ```
 On the code level, that synopsis can be implemented, almost as it is, in many languages: C, JavaScript, Python, GO, Java, C# etc. 
 
