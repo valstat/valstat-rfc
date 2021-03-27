@@ -1,12 +1,10 @@
 # Valstat is a Call/Response Protocol
 
-*"Some people are uncomfortable with silences. Not me. I've never cared much for call and response..." - Author: Miranda July*
+ *"... If you look at the source of your program, you'll notice routines that you call, but which you didn't implement..." -- Peter Van Der Linden*
 <!--
 ## Why Valstat?
 
 *As soon as we started programming, we found to our surprise that it wasn't as easy to get programs right as we had thought. Debugging had to be discovered. I can remember the exact instant when I realized that a large part of my life from then on was going to be spent in finding mistakes in my own programs.* —Maurice Wilkes discovers bugs, 1949 
-
- "... If you look at the source of your program, you'll notice routines that you call, but which you didn't implement..." -- Peter Van Der Linden
 
 Ultimately this is an effort to help eradicate programming errors. After a lot of time spent being involved in all levels of computer programming, I might humbly add to Mr Wilkes observation: Very early in the process we have discovered that not every programmer knows exactly how to implement the requirement and is equally likely not fully able to do so. Why?
 
