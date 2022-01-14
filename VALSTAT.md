@@ -6,9 +6,14 @@
 | Date             | 2022-01-14                                            |
 | Audience         |                       |
 | Author           | Dusan B. Jovanovic ( [dbj@dbj.org](mailto:dbj@dbj.org) ) |
+
+#### Revision history<!-- omit in toc -->
+
+2021-01-01 **R1**: created
+2021-01-14 **R2**: simplified
 <h4>
-Simplicity is the ultimate sophistication -- Leonardo Da Vinci
-</h4>
+<!-- Simplicity is the ultimate sophistication -- Leonardo Da Vinci
+</h4 -->
 <!--
 There are two ways of constructing a software design: One way is to make it so simple that there are obviously no deficiencies, and the other way is to make it so complicated that there are no obvious deficiencies. -- [C.A.R. Hoare](https://en.wikiquote.org/wiki/C._A._R._Hoare) -->
 
@@ -28,11 +33,6 @@ There are two ways of constructing a software design: One way is to make it so s
   - [4.2. IT landscape matters](#42-it-landscape-matters)
 - [5. Conclusions](#5-conclusions)
 - [6. References](#6-references)
-
-## Revision history<!-- omit in toc -->
-
-2021-01-01 R1: created
-2021-01-14 R2: simplified
 
 <!-- div class="page"/ -->
 
