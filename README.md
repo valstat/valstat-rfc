@@ -47,7 +47,9 @@ There is a root document describing the protocol and core concepts. There is als
 > Together a protocol and its implementation are assembling an behavior pattern.
 > 
 
-### Contact
+## Contact
+
+#### In case you still like to use exceptions, [here is the latest C++ official paper](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2022/p2544r0.html) on the cost of exceptions in C++.
 
 In case you hotly dislike this work, or if the situation is the opposite, or there is anything else you wish to communicate on the long scale in between these two extremes, please do not hesitate to contact the author:
 
