@@ -135,31 +135,36 @@ VALSTAT structure is an record made of two fields:
 - VALSTAT record
   - VALUE
   - STATUS
+ 
+ Caveat emptor: names are not mandatory. You can call them anything you like as long as you preserve the meaning. I use these names because I think they mean what I want them to mean to the member of the target audience of this document.
 
 #### 3.3. Field
 
-VALSTAT "field" is analogous to the database field. "field" is the name for an "single piece of information".
+VALSTAT "field" is analogous to the database field. "field" is the name for an "single piece of information". In present days (circa 2022) field is often called an "key value pair".
 
 In database theory "field" is: [*"a particular piece of data encapsulated within a class or object"*](https://en.wikipedia.org/wiki/Field_(computer_science)).
+ 
+I am thinking of a field as the primary particle in the context of a computer sceince. As in other places field has states.
 
-Key attributes of a field are:
+Key states of a field are:
 
-1. field always exists
-2. field can be empty or "contain a value"
+1. Existence: field always exists
+2. EMPTY : has no value
+3. OCCUPIED : has value 
 
-**Field primary state: EMPTY or OCCUPIED**
+**Field primary two states describe its Emptiness. : EMPTY or OCCUPIED**
 
-#### 3.3.1. Occupancy states
+#### 3.3.1. Field Emptiness 
 
 Field can be **primarily** in two "occupancy states"  (authors term) . We will call them : "empty" and "occupied". 
 
 ![field two occupancy states](media/field%20occupancy%20states.png)
 
-In software development terms field is an always present object **potentially** holding only one value. It might be tested if it is "empty" , or occupied aka "holding a value".
+In software development terms field is an always present object **potentially** holding a value. It can be tested if it is "empty" , or occupied aka "holding a value".
 
 ### 3.4. VALSTAT State 
 
-Value natural states are two: EXIST or NON-EXISTANT
+Any Value natural states are describing its existence: EXIST or NON-EXISTENT
 
 Combination of two fields primary states and value natural states is giving four possible states.
 
@@ -174,13 +179,13 @@ Valstat Record states are named.
 | **Error** | Empty     | AND | Has value |
 | **Empty** | Empty     | AND | Empty     |
 
-VALSTAT state names (tags) are just that: tags. Not mandating but just indicating the behaviour. 
+VALSTAT state names (tags) are just that: tags. Not mandating but just indicating the behaviour.  
 
-Evaluating the returned VALSTAT structure instance we do not immediately inspect returned values inside the fields. 
+Evaluating the returned VALSTAT structure instance we do not immediately inspect function returned values inside the fields. 
 
 In step one we inspect the relationship of two fields primary states. Empty and occupied.
 
-Returned structure instance handling, step one is only about the relationship between two fields states of occupancy. Values and their types are not used and not relevant for the step one.
+Returned structure instance handling, step one is only about the relationship between two fields states of occupancy. Values and their types are not used and not relevant for the step one. That is important: ste one does not use any type system.
 
 To reiterate: VALSTAT state decoding is the act of decoding the relationship between occupancy states of its two fields.
 
