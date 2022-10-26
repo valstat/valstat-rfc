@@ -1,4 +1,4 @@
-# Valstat is a Call/Response Protocol
+# Valstat is a Response Protocol
 
  *"... If you look at the source of your program, you'll notice routines that you call, but which you didn't implement..." -- Peter Van Der Linden*
 <!--
