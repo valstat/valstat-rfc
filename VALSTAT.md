@@ -1,4 +1,4 @@
-<h1>valstat - call/response <!-- returns handling--> protocol</h1><!-- omit in toc -->
+<h1>valstat - response <!-- returns handling--> protocol</h1><!-- omit in toc -->
  
 | &nbsp;           | &nbsp;                                                |
 | ---------------- | ----------------------------------------------------- |
@@ -38,9 +38,9 @@ There are two ways of constructing a software design: One way is to make it so s
 
 ## 1. Abstract
 
-This is a proposal about logical, feasible, lightweight and effective protocol for handling the function call/response activity, decoupled from both platforms and languages.
+This is a proposal about logical, feasible, lightweight and effective protocol for handling the function response activity, decoupled from both platforms and languages.
 
-This paper describes an function call/response software protocol, not language specific implementations or platform specific solutions.
+This paper describes an function software protocol, not language specific implementations or platform specific solutions.
 
 <span id="motivation" />
 
@@ -110,16 +110,16 @@ CALLER --> (function local/remote call) --> RESPONDER
 
 CALLER <-- (return VALSTAT structure instance) <-- RESPONDER
 ```
-Locality: `CALLER` or `RESPONDER` can reside inside the same or different, application or system domains. Local or remote to each other. On all levels of information system.
+Locality: `CALLER` and `RESPONDER` can reside inside the same or different, application or system domains. Local or remote to each other. On all levels of information system. `CALLER` and `RESPONDER` are locality independant.
 
-**Valstat response consuming logic is divided in two steps**
+**Valstat function response logic is divided in two steps**
 
 As part of response handling activity, regardless of platform or language, the two steps logic is always present: 
 
-- step one -- Is something returned? 
-- step two -- Can I use it?   
+1. step one -- Is something returned? 
+2. step two -- Can I use it?   
 
-Conceptually valstat protocol is the "two steps" return processing:
+Conceptually valstat protocol is the "two steps" function return consuming:
 
 1. use the structure returned to determine the step two
     - not using the type system or actual values returned
