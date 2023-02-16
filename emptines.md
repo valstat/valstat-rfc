@@ -60,10 +60,44 @@ Empty software entity can not exhibit secondary state. But, Non-empty entity can
 | `null`     | does not have a value
 | NOT `null` | does have a value
 
-`null` denotes the non-existence of some value. 
-
-Example pseudo code
+Mandatory state diagram:
 ```
+                  +----------------+
+                  |                |
+                  | Initial State  |
+                  |                |
+                  +-------+--------+
+                          |
+                          |
+                          |
++----------------+        |        +----------------+
+|                |        |        |                |
+|  Empty         +<-------+-------->  Occupied      |
+|                |                 |                |
++-------+--------+                 +-------+--------+
+        |                                  |
+        |                                  |
+        |                                  |
+        |        +----------------+        |        +----------------+
+        |        |                |        |        |                |
+        |        |  Exist         +<-------+------->+ Does not exist |
+        |        |                |                 |                |
+        |        +-------+--------+                 +--------+-------+
+        |                |                                   |
+        |                |                                   |
+        |                |                                   |
+        |                |                                   |
+        |                |                                   |
+        |                |                                   |
+        |        +-------v--------+                          |
+        |        |                |                          |
+        +------->+  Final State   +<-------------------------+
+                 |                |
+                 +----------------+
+
+```
+One simple example will clarify (pseudo code):
+```cpp
 // primary two state
 interface IEmpty {
     // true if empty
@@ -73,19 +107,18 @@ interface IEmpty {
 // secondary two state
 interface IExist {
     // true if null
-    bool is_null () ;
+    bool exists () ;
 }
 ```
 Implement software entity that will always exist:
-```
+```cpp
 // persistent entity always exist
 // just like a file on a disk, once created
-type PersistentEntity :
+type StatefullEntity :
 implements IEmpty, IExist
 {
-// existence is implied
-// it is never null
-bool is_null () { false };
+// existence is implied, it is a persistent object
+bool exists () { return true_; };
 
 // depends on the concrete type
 virtual bool is_empty () = 0 ;
@@ -93,28 +126,45 @@ virtual bool is_empty () = 0 ;
 ```
 And now implement a concrete type that has primary and secondary states
 ```cpp
-type FileObject : inherits PersistentEntity 
+type Field : inherits StatefullEntity 
 {
+    const char * payload_ =  null ;
     bool empty_ = false ;
     
     virtual bool is_empty () { return empty_ ; }
 
-    FileObject () {
+    Field () {
         // create empty file
         empty_ = true ;
     }
 
-    void write( const char * new_line_ ){
+    void write( const char * new_payload_ ){
         // write to it and change the primary state
-        empty_ = false ;
+        payload_ = new_payload_ ;
+        empty_ = payload_ ? false : true ;
     }
 
-       // remove from the file all the text == content_
-    void remove_if_inside ( const char * content_) {
-       if ( this->file_is_empty())
-         empty_ = true ;
+    // 
+    const char * read () {
+        return payload_ ;
     }
 };
+```
+The usage
+```cpp
+// pseudo code
+// create initial state
+Field fo_ () ; 
+// it is empty
+assert( fo_.is_empty() ) ;
+// and it does always exist
+assert(fo_.exists());
+```
+We can change the secondary state. The emptiness. State of emptiness is always not-empty.
+```cpp
+fo.write("PAYLOAD");
+// it is not empty any more
+assert( false == fo_.is_empty() ) ;
 ```
 
 
