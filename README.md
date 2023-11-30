@@ -47,11 +47,11 @@ The key is: every interface method has to return valstat type. Everybody has to 
 
 valstat documentation is deliberately technical, short and to the point. Prose is left to be authored in future texts in response to future criticisms, comments and clarification requirements.
 
-> valstat protocol is designed to be platform and language agnostic.
+> valstat concept is designed to be platform and language agnostic.
 
-There is a root document describing the protocol and core concepts. There is also a number of repositories describing the various implementations in few widely used programing languages. 
+There is a root document describing the core concepts. There is also a number of repositories describing the various implementations in few widely used programing languages. 
 
-1. valstat Protocol
+1. valstat Concept
    1. The language agnostic, conceptual, [root document](VALSTAT.md)
 2. c implementation
    1. planned ISO WG14 proposal 
@@ -61,7 +61,7 @@ There is a root document describing the protocol and core concepts. There is als
 5. c# implementation
 6. go implementation
 
-> Together a protocol and its implementation are assembling an behavior pattern.
+> Together a concept and its implementation are making a behavior pattern.
 > 
 
 ## Contact
