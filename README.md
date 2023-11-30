@@ -1,4 +1,4 @@
-# Valstat is a Response Protocol
+# Valstat is a Response Concept
 
  *"... If you look at the source of your program, you'll notice routines that you call, but which you didn't implement..." -- Peter Van Der Linden*
 <!--
@@ -18,7 +18,7 @@ Also. Safe code is slow(er).Dangerous code is fast(er). valstat might help in th
 
 *"A paradigm is a standard, perspective, or set of ideas. A paradigm is a way of looking at something ... When you change paradigms, you're changing how you think about something..."* [vocabulary.com](https://www.vocabulary.com/dictionary/paradigm)
 -->
-Valstat is a protocol and an software architecture paradigm. Valstat is not yet another error handling idiom. More precisely valstat as a protocol, is a paradigm shift about unified logic of creating a call response and handling the payload returned.
+Valstat is an software architecture paradigm. Valstat is not yet another error handling idiom. More precisely valstat as a protocol, is a paradigm shift about unified logic of creating a call response and handling the payload returned.
 <!--
 ## Scope
 
@@ -26,6 +26,23 @@ The scope of Valstat is ambitious: from the micro code level, to the macro, inte
 
 > Every caller has a responder&trade;
 -->
+## I am in a rush
+Ok, here you are. In the language you need to use, implement valstat as a light structure of two fields. The **field** in many business systems  languages is `option<T>`; it can be empty or occupied; when not empty it has a value of type T. Call the first field `Value` and the second field `Status`
+
+```cpp
+// VALSTAT pseudo code synopsys
+{
+   option value
+   option status
+}
+```
+you call the function and it returns such a structure. You use it in two steps:
+
+1. what is the call outcome?
+2. depending on the outcome what is the value (if any) or what is the status (if any)
+
+The key is: every interface method has to return valstat type. Everybody has to agree on the Valstat two-step usage. That also dictates how are valstats made. Everybody can be a team, a project, a system, a company, or wider than that. The wider the better. One can return valstat types using json, http, xml, sql or whatever else.
+
 # Documentation
 
 valstat documentation is deliberately technical, short and to the point. Prose is left to be authored in future texts in response to future criticisms, comments and clarification requirements.
