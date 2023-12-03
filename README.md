@@ -1,6 +1,6 @@
-# Valstat is an Agreement
+# Valstat is a Kind-of-a-Contract 
 
-## Call Response Concept
+## Call Response Agreement
 
  *"... If you look at the source of your program, you'll notice routines that you call, but which you didn't implement..." -- Peter Van Der Linden*
 <!--
